@@ -23,6 +23,8 @@ class VehicleResource extends Resource
 
     protected static ?string $modelLabel = 'Vehicle';
 
+    protected static ?int $navigationSort = 3;
+
     protected static ?string $pluralModelLabel = 'Vehicles';
 
     public static function form(Form $form): Form
@@ -112,7 +114,8 @@ class VehicleResource extends Resource
                                         'out_of_service' => 'Out of Service',
                                     ])
                                     ->default('available')
-                                    ->prefixIcon('heroicon-o-clipboard-document-check'),
+                                    ->prefixIcon('heroicon-o-clipboard-document-check')
+                                    ->disabled(fn ($record) => $record && $record->status === 'in_use'),
                             ]),
                         Forms\Components\Toggle::make('is_active')
                             ->label('Active Status')

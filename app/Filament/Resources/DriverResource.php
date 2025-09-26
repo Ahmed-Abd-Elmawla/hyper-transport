@@ -23,6 +23,8 @@ class DriverResource extends Resource
 
     protected static ?string $modelLabel = 'Driver';
 
+        protected static ?int $navigationSort = 2;
+
     protected static ?string $pluralModelLabel = 'Drivers';
 
     public static function form(Form $form): Form
@@ -42,13 +44,15 @@ class DriverResource extends Resource
                                     ->searchable()
                                     ->preload()
                                     ->prefixIcon('heroicon-o-building-office-2')
-                                    ->placeholder('Select company'),
+                                    ->placeholder('Select company')
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                                 Forms\Components\TextInput::make('name')
                                     ->label('Full Name')
                                     ->required()
                                     ->maxLength(255)
                                     ->prefixIcon('heroicon-o-user')
-                                    ->placeholder('Enter driver full name'),
+                                    ->placeholder('Enter driver full name')
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                             ]),
                         Forms\Components\Grid::make(2)
                             ->schema([
@@ -58,14 +62,16 @@ class DriverResource extends Resource
                                     ->required()
                                     ->maxLength(255)
                                     ->prefixIcon('heroicon-o-envelope')
-                                    ->placeholder('driver@example.com'),
+                                    ->placeholder('driver@example.com')
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                                 Forms\Components\TextInput::make('phone')
                                     ->label('Phone Number')
                                     ->tel()
                                     ->required()
                                     ->maxLength(255)
                                     ->prefixIcon('heroicon-o-phone')
-                                    ->placeholder('+1 (555) 123-4567'),
+                                    ->placeholder('+1 (555) 123-4567')
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                             ]),
                     ])
                     ->collapsible()
@@ -84,12 +90,14 @@ class DriverResource extends Resource
                                     ->maxLength(255)
                                     ->prefixIcon('heroicon-o-identification')
                                     ->placeholder('Enter license number')
-                                    ->unique(ignoreRecord: true),
+                                    ->unique(ignoreRecord: true)
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                                 Forms\Components\DatePicker::make('hire_date')
                                     ->label('Hire Date')
                                     ->required()
                                     ->prefixIcon('heroicon-o-calendar')
-                                    ->default(now()),
+                                    ->default(now())
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                             ]),
                         Forms\Components\Grid::make(2)
                             ->schema([
@@ -103,12 +111,14 @@ class DriverResource extends Resource
                                         'terminated' => 'Terminated',
                                     ])
                                     ->default('active')
-                                    ->prefixIcon('heroicon-o-clipboard-document-check'),
+                                    ->prefixIcon('heroicon-o-clipboard-document-check')
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                                 Forms\Components\Toggle::make('is_active')
                                     ->label('Active Status')
                                     ->helperText('Toggle to activate/deactivate driver')
                                     ->default(true)
-                                    ->required(),
+                                    ->required()
+                                    ->disabled(fn (?Driver $record) => $record && $record->status === 'inactive'),
                             ]),
                     ])
                     ->collapsible()

@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \App\Models\Trip::observe(\App\Observers\TripObserver::class);
+
+        // Place the indicator before the user account icon
+        \Filament\Support\Facades\FilamentView::registerRenderHook(
+            \Filament\View\PanelsRenderHook::GLOBAL_SEARCH_AFTER,
+            fn () => \Livewire\Livewire::mount('active-trips-indicator')
+        );
     }
 }

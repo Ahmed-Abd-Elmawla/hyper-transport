@@ -1,0 +1,91 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+@config 'tailwind.config.js';
+
+
+.fi-topbar {
+    background-color: #004F3B !important;
+    border-color: #004F3B !important;
+}
+
+.fi-topbar nav {
+    background-color: #004F3B !important;
+    border-color: #004F3B !important;
+    box-shadow: none !important;
+    --tw-ring-color: transparent !important;
+    --tw-ring-offset-width: 0 !important;
+    --tw-ring-offset-color: transparent !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+}
+.fi-topbar nav a,
+.fi-topbar nav .fi-topbar-item {
+    color: #e5e7eb !important;
+}
+
+.fi-topbar nav a:hover,
+.fi-topbar nav .fi-topbar-item:hover {
+    color: #ffffff !important;
+}
+
+.fi-topbar-item:hover {
+    color: #fecaca !important;
+}
+
+.fi-sidebar {
+    background-color: #002C22 !important;
+}
+
+.fi-sidebar-nav-item {
+    color: #d1d5db !important;
+}
+
+.fi-sidebar-item-label {
+    color: #A1A1AA !important;
+}
+
+.fi-sidebar-nav-item:hover .fi-sidebar-item-label {
+    color: white !important;
+}
+
+.fi-sidebar-nav-item.fi-active {
+    background-color: rgb(var(--primary-500)) !important;
+    color: white !important;
+}
+
+.fi-sidebar .fi-sidebar-item.fi-active .fi-sidebar-item-label {
+    color: rgb(var(--primary-600)) !important;
+    opacity: 1 !important;
+    font-weight: 600; /* optional */
+}
+
+.fi-sidebar .fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+    color: rgb(var(--primary-600)) !important;
+    opacity: 1 !important;
+}
+
+.fi-sidebar .fi-sidebar-nav-item:not(.fi-active) .fi-sidebar-item-label {
+    color: #A1A1AA !important;
+    opacity: 1 !important;
+}
+
+html.dark body,
+html.dark .fi-main,
+html.dark .fi-body {
+    background-color: #002C22 !important;
+}
+
+html.dark .fi-main > * {
+    background-color: transparent !important;
+}
+
+.fi-sidebar-header{
+    background-color: #004F3B !important;   /* force dark background */
+    border-color: #004F3B !important;
+    box-shadow: none !important;
+    color: #e5e7eb !important;
+}
+
+.fi-logo{
+    color: #e5e7eb !important;
+}

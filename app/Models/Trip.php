@@ -19,6 +19,7 @@ class Trip extends Model
         'end_at',
         'status',
         'notes',
+        'job_batch_id',
     ];
 
     protected $casts = [
