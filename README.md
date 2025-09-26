@@ -24,13 +24,26 @@ DB_PASSWORD=
 > [!CAUTION]
 > Make sure you have entered the configuration for your machine correctly before continuing
 
-3. After create the database you can install this custom command to complete the installation
+3. After create the database you can install composer dependencies
+
+```bash
+composer install
+```
+
+4. After create the database you can install this custom command to complete the installation
 
 ```bash
 php artisan hyper-transport:install
 ```
 
 Once finished a link will appear in terminal `CTRL + Click it` to open in your browser
+
+> [!IMPORTANT]
+> You should run the following command after installation
+
+```bash
+php artisan queue:work
+```
 
 > [!TIP]
 > You can login to dashboard by using the following credentials:
